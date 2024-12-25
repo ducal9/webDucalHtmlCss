@@ -1,0 +1,10 @@
+
+        <div >
+           <div class="login"> <div> <button onclick="showLoginBox()">Đăng Nhập</button></div>
+           <script>
+            function showLoginBox() {
+                const loginBox = document.getElementById('login-box');
+                const congratsBox = document.getElementById('giohangbox');
+                loginBox.style.display = 'block';
+                congratsBox.style.display = 'none';
+ }

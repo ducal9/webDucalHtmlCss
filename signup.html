@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/c9f5871d83.js" crossorigin="anonymous"></script>
+    <title>Learing</title>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <nav class="nav">
+                <div class="nav-left">
+                    <a href="login.html"><i class="fas fa-paper-plane"></i>DUCAL</a>
+                </div>
+            </nav>
+        </header>
+        <div class="login">
+            <div class="left">
+                <div>
+                    <div class="top">
+                        <h2>SIGN UP</h2>
+                    </div>
+                    <div class="input">
+                        <input type="text" id="name" placeholder="Full Name" required>
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="input">
+                        <input type="date" id="date" placeholder="Date" required>
+                        <i class="fas fa-calendar"></i>
+                    </div>
+                    <div class="input">
+                        <input type="text" id="username" placeholder="Username" required>
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="input">
+                        <input type="password" id="password" placeholder="Password" required>
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="input">
+                        <input type="password" id="cfpassword" placeholder="Confirm Password" required>
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="btn">
+                        <button id="Submit" onclick="signup()">Đăng Ký</button>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <img src="backgroud.jpg">
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    function signup() {
+        var name = document.getElementById('name').value;
+        var date = document.getElementById('date').value;
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+        var cfpassword = document.getElementById('cfpassword').value;
+
+        let controlDate = 'false';
+        let controlFullName = 'true';
+        let controlusername = 'true';
+        let controlPassword = 'true';
+
+        // Kiểm tra date
+        if (date == '') {
+            alert("Bạn phải nhập date");
+            return 0;
+        } else controlDate = 'true';
+
+        // // Kiểm tra full name
+        // let x = name;
+        // x = x.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        // // chuyen ten co dau ve ten khong dau de may khong bao loi la co ki tu dac biet
+        // let space = 0;
+        // for (i = 0; i < x.length; i++) {
+        //     if (((x.charCodeAt(i) < 65 || x.charCodeAt(i) > 122 || (x.charCodeAt(i) > 90 && x.charCodeAt(i) < 97)) && (x.charCodeAt(i) != 32))) {
+        //         // Điều này bao gồm các ký tự không phải là chữ cái từ 'A' đến 'Z' (mã Unicode từ 65 đến 90) và từ 'a' đến 'z' (mã Unicode từ 97 đến 122).
+        //         controlFullName = 'false';
+        //         alert('Tên đầy đủ không chứa các ký tự đặc biệt!');
+        //         return 0;
+        //     }
+        //     if (x.charCodeAt(i) == 32) space++;
+        // }
+        // if (((space == 0) || x[0] == ' ' || x[x.length - 1] == ' ') && controlFullName == 'true') {
+        //     controlFullName = 'false';
+        //     if (space == 0) { alert("Tên đầy đủ phải chứa cả họ và tên."); return 0; }
+        //     if (x[0] == ' ') { alert("Ký tự đầu không nên là ký tự trắng."); return 0; }
+        //     if (x[x.length - 1] == ' ') { alert("Ký tự cuối không nên là ký tự trắng."); return 0; }
+        // }
+
+        // Kiểm tra username
+        x = username;
+        if (x.length < 6) {
+            controlusername = 'false';
+            alert("Username phải từ 6 kí tự trở lên.");
+            return 0;
+        } else {
+            for (i = 0; i < x.length; i++) {
+                if ((x.charCodeAt(i) < 48) || (x.charCodeAt(i) > 57 && x.charCodeAt(i) < 65) || (x.charCodeAt(i) > 90 && x.charCodeAt(i) < 97) || (x.charCodeAt(i) > 122)) {
+                    controlusername = 'false';
+                    alert("username không chứa các ký tự đặc biệt!");
+                    return 0;
+                }
+            }
+        }
+
+        // Kiểm tra password
+        x = password;
+        if ((x.length < 6) || x == username) {
+            controlPassword = 'false';
+            if (x.length < 6) { alert("Password phải có trên 6 ký tự"); return 0; }
+            else if (x == username) { alert("Password không nên bị trùng với username"); return 0; }
+        } else {
+            for (i = 0; i < x.length; i++) {
+                if ((x.charCodeAt(i) < 48) || (x.charCodeAt(i) > 57 && x.charCodeAt(i) < 65) || (x.charCodeAt(i) > 90 && x.charCodeAt(i) < 97) || (x.charCodeAt(i) > 122)) {
+                    controlPassword = 'false';
+                    alert("Password không chứa các ký tự đặc biệt!");
+                    return 0;
+                }
+            }
+            if (controlPassword == 'true') {
+                if (password != cfpassword) {
+                    alert("Pw and cfpw phải giống nhau");
+                    return 0;
+                }
+            }
+        }
+
+        // Create user object
+        let user = {
+            name: name,
+            date: date,
+            username: username,
+            password: password,
+        };
+
+        // Nhận dữ liệu hiện có hoặc khởi tạo một mảng trống
+        let data = JSON.parse(localStorage.getItem('user')) || [];
+
+        // Đẩy user mới vào mảng
+        data.push(user);
+
+        // Save the updated array back to local storage
+        localStorage.setItem('user', JSON.stringify(data));
+
+        alert('Đăng kí thành công!');
+        window.location.href = "login.html";
+    }
+</script>
+
+</html>

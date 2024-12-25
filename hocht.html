@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/caube.css">
+    <script src="https://kit.fontawesome.com/c9f5871d83.js" crossorigin="anonymous"></script>
+    <title>Bài cuối kỳ</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="hocht.css" media="all">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <nav class="nav">
+                <div class="nav-left">
+                    <a href="index.html"><i class="fa-solid fa-paper-plane"></i>DUCAL</a>
+                </div>
+                <div class="nav-right">
+                    <ul>
+                        <li class="active" onclick="location.href='vaohoc.html'">Vào Học</li>
+                        <li onclick="location.href='donggop.html'">Đóng góp</li>
+                        <li onclick="location.href='gioithieu.html'">Liên hệ</li>
+                        <li id="NguoiDung">
+                            <h4 id="user">Người dùng</h4>
+                            <div>
+                                 
+                                <p onclick="location.href='login.html'">Đăng xuất</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div class="Tong">
+            <h2>HTML</h2>
+            <div class="Main">
+                <div class="Main_left">
+                    <div class="Question">
+                        <div>
+                            <p>Câu hỏi 1</p>
+                        </div>
+                        <div class="Content">
+                            <div>Để tạo tiêu đề lớn nhất trong HTML, chúng ta sử dụng thẻ nào?</div>
+                            <div class="Answer">
+                                <div>
+                                    <input type="radio">
+                                    <div class="A">
+                                        <span>A. </span>
+                                        <div>H1</div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <input type="radio">
+                                    <div>
+                                        <span>B. </span>
+                                        <div>H3</div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <input type="radio">
+                                    <div>
+                                        <span>C. </span>
+                                        <div>H5</div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <input type="radio">
+                                    <div>
+                                        <span>D. </span>
+                                        <div>Header</div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                    <div class="Question">
+                        <div>
+                            <p>Câu hỏi 2</p>
+                        </div>
+                        <div class="Content">
+                            <div>Để tạo một ô input cho người dùng nhập liệu trong HTML, chúng ta sử dụng thẻ nào?</div>
+                            <div class="Answer">
+                                <div>
+                                    <input type="radio">
+                                    <div class="A">
+                                        <span>A. </span>
+                                        <div>Text</div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <input type="radio">
+                                    <div>
+                                        <span>B. </span>
+                                        <div>Input</div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <input type="radio">
+                                    <div>
+                                        <span>C. </span>
+                                        <div>Form</div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <input type="radio">
+                                    <div>
+                                        <span>D. </span>
+                                        <div>Submit</div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                    <div class="Question">
+                        <div>
+                            <p>Câu hỏi 3</p>
+                        </div>
+                        <div class="Content">
+                            <div>Trình bày cách tạo một danh sách có dấu đánh số từ 1 đến 5 trong HTML?</div>
+                            <div class="Answer">
+                                <textarea name="" id="" cols="100" rows="2"></textarea>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="Main_right">
+                    <button onclick="HoanThien()" style="cursor: pointer;">
+                        <h1>Submit</h1>
+                    </button>
+                </div>
+            </div>
+        </div>
+</body>
+<script>
+    function HoanThien() {
+        alert("Bài làm của bạn đã được lưu");
+        location.href = "donggop.html";
+    }
+    const data = JSON.parse(localStorage.getItem('user'))
+ const name = data[localStorage.getItem('UserAccount')].name;
+ document.getElementById('user').innerText = name;
+//  hiện tên người dùng
+</script>
+
+</html>

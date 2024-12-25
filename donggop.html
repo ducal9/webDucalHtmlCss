@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/c9f5871d83.js" crossorigin="anonymous"></script>
+    <title>Bài cuối kỳ</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .TypeQuestion {
+            display: none; /* Ẩn các khối câu hỏi ban đầu */
+            margin-top: 20px;
+        }
+
+        table {
+            width: 60%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-left">
+                <a href="index.html"><i class="fa-solid fa-paper-plane"></i>DUCAL</a>
+            </div>
+            <div class="nav-right">
+                <ul>
+                    <li class="active" onclick="location.href='vaohoc.html'">Vào Học</li>
+                    <li onclick="location.href='donggop.html'">Đóng góp</li>
+                    <li onclick="location.href='gioithieu.html'">Liên hệ</li>
+                    <li id="NguoiDung">
+                        <h4 id="user">Người dùng</h4>
+                        <div>
+                             
+                            <p onclick="location.href='login.html'">Đăng xuất</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <header class="header">
+            <h2>Đóng góp câu hỏi</h2>
+        </header>
+
+        <main>
+            <div>
+                <h3>Chọn dạng câu hỏi</h3>
+                <button onclick="showQuestion('CauHoiDien')">Dạng câu hỏi điền</button>
+                <button onclick="showQuestion('ChonNhieuDapAn')">Dạng câu hỏi nhiều đáp án</button>
+                <button onclick="showQuestion('ChonMotDapAn')">Dạng câu hỏi một đáp án</button>
+            </div>
+
+            <!-- Dạng câu hỏi điền -->
+            <div id="CauHoiDien" class="TypeQuestion">
+                <h4>Dạng câu hỏi điền</h4>
+                <div>
+                    <p>Nhập câu hỏi:</p>
+                    <input type="text" id="contentInputDien" placeholder="Content Question...">
+                </div>
+                <div>
+                    <p>Nhập đáp án:</p>
+                    <input type="text" id="answerInputDien" placeholder="Answer Question...">
+                </div>
+                <button onclick="saveQuestion('CauHoiDien')">Save</button>
+                <button onclick="hideQuestions()">Close</button>
+            </div>
+
+            <!-- Dạng câu hỏi nhiều đáp án -->
+            <div id="ChonNhieuDapAn" class="TypeQuestion">
+                <h4>Dạng câu hỏi nhiều đáp án</h4>
+                <div>
+                    <p>Nhập câu hỏi:</p>
+                    <input type="text" id="contentInputNhieu" placeholder="Content Question...">
+                </div>
+                <p>Điền đáp án:</p>
+                <div>
+                    <input type="checkbox" id="answer1Check"><input type="text" id="answer1Input" placeholder="Nội dung đáp án 1">
+                    <br>
+                    <input type="checkbox" id="answer2Check"><input type="text" id="answer2Input" placeholder="Nội dung đáp án 2">
+                    <br>
+                    <input type="checkbox" id="answer3Check"><input type="text" id="answer3Input" placeholder="Nội dung đáp án 3">
+                    <br>
+                    <input type="checkbox" id="answer4Check"><input type="text" id="answer4Input" placeholder="Nội dung đáp án 4">
+                </div>
+                <button onclick="saveQuestion('ChonNhieuDapAn')">Save</button>
+                <button onclick="hideQuestions()">Close</button>
+            </div>
+
+            <!-- Dạng câu hỏi một đáp án -->
+            <div id="ChonMotDapAn" class="TypeQuestion">
+                <h4>Dạng câu hỏi một đáp án</h4>
+                <div>
+                    <p>Nhập câu hỏi:</p>
+                    <input type="text" id="contentInputMot" placeholder="Content Question...">
+                </div>
+                <p>Điền đáp án:</p>
+                <div>
+                    <input type="radio" name="One"><input type="text" id="answer1InputMot" placeholder="Nội dung đáp án 1">
+                    <br>
+                    <input type="radio" name="One"><input type="text" id="answer2InputMot" placeholder="Nội dung đáp án 2">
+                    <br>
+                    <input type="radio" name="One"><input type="text" id="answer3InputMot" placeholder="Nội dung đáp án 3">
+                    <br>
+                    <input type="radio" name="One"><input type="text" id="answer4InputMot" placeholder="Nội dung đáp án 4">
+                </div>
+                <button onclick="saveQuestion('ChonMotDapAn')">Save</button>
+                <button onclick="hideQuestions()">Close</button>
+            </div>
+
+            <!-- Bảng hiển thị câu hỏi -->
+            <div>
+                <h3>Danh sách câu hỏi đã đóng góp</h3>
+                <table id="questionsTable">
+                    <thead>
+                        <tr>
+                            <th>STT</th>
+                            <th>Dạng câu hỏi</th>
+                            <th>Nội dung câu hỏi</th>
+                            <th>Đáp án</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Câu hỏi sẽ được thêm vào đây -->
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        let questionCounter = 0;
+
+        function showQuestion(id) {
+            // Ẩn tất cả các khối câu hỏi
+            document.querySelectorAll('.TypeQuestion').forEach(div => {
+                div.style.display = 'none';
+            });
+
+            // Hiển thị khối câu hỏi được chọn
+            document.getElementById(id).style.display = 'block';
+        }
+
+        function hideQuestions() {
+            // Ẩn tất cả các khối câu hỏi
+            document.querySelectorAll('.TypeQuestion').forEach(div => {
+                div.style.display = 'none';
+            });
+        }
+
+        function saveQuestion(type) {
+            questionCounter++;
+            const tableBody = document.querySelector('#questionsTable tbody');
+            const row = document.createElement('tr');
+
+            // Thu thập dữ liệu theo loại câu hỏi
+            let questionContent = '';
+            let answers = '';
+            if (type === 'CauHoiDien') {
+                questionContent = document.getElementById('contentInputDien').value;
+                answers = document.getElementById('answerInputDien').value;
+            } else if (type === 'ChonNhieuDapAn') {
+                questionContent = document.getElementById('contentInputNhieu').value;
+                answers = [
+                    document.getElementById('answer1Input').value,
+                    document.getElementById('answer2Input').value,
+                    document.getElementById('answer3Input').value,
+                    document.getElementById('answer4Input').value
+                ].filter(ans => ans).join(', ');
+            } else if (type === 'ChonMotDapAn') {
+                questionContent = document.getElementById('contentInputMot').value;
+                answers = [
+                    document.getElementById('answer1InputMot').value,
+                    document.getElementById('answer2InputMot').value,
+                    document.getElementById('answer3InputMot').value,
+                    document.getElementById('answer4InputMot').value
+                ].filter(ans => ans).join(', ');
+            }
+
+            // Thêm câu hỏi vào bảng
+            row.innerHTML = `
+                <td>${questionCounter}</td>
+                <td>${type}</td>
+                <td>${questionContent}</td>
+                <td>${answers}</td>
+            `;
+            tableBody.appendChild(row);
+
+            // Ẩn form sau khi lưu
+            hideQuestions();
+        }
+    </script>
+</body>
+
+</html>

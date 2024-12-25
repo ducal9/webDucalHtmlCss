@@ -1,0 +1,132 @@
+.class1{
+    display: flex;
+    justify-content: space-around;
+    padding: 30px 10% 0 10%;
+    width: 820px;
+    height: 240px;
+    position: relative;
+    top:110px;
+    
+    margin: auto;
+}
+.class2{
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    top:20px;
+    left:-210px;
+    z-index: 0;  
+    margin: auto;
+}
+.class2:hover {
+    border: 3px solid rgb(51, 150, 216); 
+}
+.bt1{
+    background-color: #ccff00;
+    color: rgb(0, 188, 240);
+    font-weight: bold;
+    display: none; 
+    position: absolute;
+    width: 80px;
+    height: 30px;
+    top: 150px;
+    left: 140px;
+}
+.class2:hover .bt1 {
+    display: block; 
+}
+.html{
+    background-color: rgba(140, 140, 140, 0);
+    font-size: 24px;
+    width: 220px;
+    height: 50px;
+    position: absolute;
+    top:150px;
+    z-index: 2;
+    text-align: center;
+    color: rgb(67, 211, 38);
+    line-height: 2;
+}
+
+
+.class3{
+    margin: auto;
+    width: 220px;
+    height: 300px;
+    position:absolute;
+    top:20px;
+    left:250px;
+    z-index: 0;
+}
+.class3:hover {
+    width: 320px;
+    height: 300px;
+    border: 3px solid rgb(51, 150, 216);
+    border-radius: 50%;
+}
+.bt2{
+    background-color: #ccff00;
+    color: rgb(0, 188, 240);
+    font-weight: bold;
+    display: none;
+    position: absolute;
+    width: 80px;
+    height: 30px;
+    top: 150px;
+    left: 140px;
+}
+.class3:hover .bt2 {
+    display: block; 
+}
+.css{
+    background-color: rgba(140, 140, 140, 0);
+    font-size: 24px;
+    width: 220px;
+    height: 50px;
+    position: absolute;
+    top:150px;
+    z-index: 2;
+    text-align: center;
+    color: rgb(67, 211, 38);
+    line-height: 2;
+}
+
+
+.class4{
+    margin: auto;
+    width: 220px;
+    height: 300px;
+    position:absolute;
+    top:20px;
+    left:690px; 
+    z-index: 0;
+}
+.class4:hover {
+    border: 3px solid rgb(51, 150, 216);
+}
+.bt3{
+    background-color: #ccff00;
+    color: rgb(0, 188, 240);
+    font-weight: bold;
+    display: none;
+    position: absolute;
+    width: 80px;
+    height: 30px;
+    top: 150px;
+    left: 140px;
+}
+.class4:hover .bt3 {
+    display: block; 
+}
+.js{
+    background-color: rgba(255, 255, 255, 0);
+    font-size: 24px;
+    width: 220px;
+    height: 50px;
+    position: absolute;
+    top:150px;
+    z-index: 2;
+    text-align: center;
+    color: rgb(67, 211, 38);
+    line-height: 2;
+}

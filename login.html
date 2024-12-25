@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/c9f5871d83.js" crossorigin="anonymous"></script>
+    <title>Learning</title>
+    <script src="login.js" defer></script>
+    <script src="main.js" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <nav class="nav">
+                <div class="nav-left">
+                    <a href="login.html"><i class="fas fa-paper-plane"></i>DUCAL</a>
+                </div>
+            </nav>
+        </header>
+        <div class="login">
+            <div class="left">
+                <div>
+                    <div class="top">
+                        <h2>LOGIN</h2>
+                    </div>
+                    <div class="input">
+                        <input type="text" id="Username" placeholder="Username" required>
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="input">
+                        <input type="password" id="Password" placeholder="Password" required>
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="btn">
+                        <button class="bLogin" type="button" onclick="CheckForm()">Login</button>
+                    </div>
+                    <div class="btn">
+                        <button class="bLogin" id="bSu" onclick="location.href='signup.html'">Sign Up</button>
+                    </div>
+                </div>
+            </div>
+            <div class="right">
+                <img src="backgroud.jpg">
+            </div>
+        </div>
+    </div>
+    <script>
+        function CheckForm() {
+            // là toán tử phủ định, nghĩa là kiểm tra xem mục 'user' có giá trị falsy hay không. Nếu không tồn tại (hoặc có giá trị falsy), điều kiện này trở thành đúng.
+            if (!localStorage.getItem('user')) {
+                var data = [
+                    {
+                        name: "Dang Cuong",
+                        date: "2023-07-08",
+                        username: "cuong7777",
+                        password: "123123",
+                    }
+                ];
+                /*Nếu điều kiện trên là đúng, tức là không có mục 'user' trong localStorage, tiếp theo:
+                Tạo một mảng data chứa thông tin người dùng mặc định.
+                Sử dụng localStorage.setItem('user', JSON.stringify(data)); để lưu mảng data dưới tên 'user' trong localStorage.
+                 Hàm JSON.stringify được sử dụng để chuyển đổi mảng thành một chuỗi JSON trước khi lưu vào localStorage.
+                */
+
+                localStorage.setItem('user', JSON.stringify(data));
+            }
+            var account = JSON.parse(localStorage.getItem('user')) || [];
+            /* tác dụng lấy giá trị của 'user' từ localStorage, 
+            chuyển đổi nó thành một đối tượng JavaScript (nếu có), và gán vào biến account.
+             Nếu không có giá trị hoặc giá trị không phải là một đối tượng hợp lệ, thì account sẽ là một mảng trống.
+            */
+            let username = document.getElementById('Username').value;
+            //  Lấy giá trị của phần tử có id là 'Username' trong DOM (Document Object Model), giả sử đó là một trường nhập (input), và lưu giá trị này vào biến username.
+            let password = document.getElementById('Password').value;
+            let isLoginSuccessful = false;
+            // Khởi tạo một biến isLoginSuccessful với giá trị ban đầu là false. biến này sẽ được sử dụng để theo dõi xem quá trình đăng nhập có thành công hay không.
+
+            for (let i = 0; i < account.length; i++) {
+                console.log(account[i]);
+                if (account[i].username == username && account[i].password == password) {
+                    localStorage.setItem('UserAccount', i);
+                    alert("Đăng nhập thành công!");
+                    location.href = "index.html";
+                    isLoginSuccessful = true;
+                    break;
+                }
+            }
+
+            if (!isLoginSuccessful) {
+                alert("Tài khoản hoặc mật khẩu chưa chính xác!");
+            }
+        }
+    </script>
+</body>
+
+</html>

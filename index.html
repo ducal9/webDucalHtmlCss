@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/caube.css">
+    <script src="https://kit.fontawesome.com/c9f5871d83.js" crossorigin="anonymous"></script>
+    <title>Bài cuối kỳ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <nav class="nav">
+                <div class="nav-left">
+                    <a href="index.html"><i class="fa-solid fa-paper-plane"></i>DUCAL</a>
+                </div>
+                <div class="nav-right">
+                    <ul>
+                        <li class="active" onclick="location.href='vaohoc.html'">Vào Học</li>
+                        <li onclick="location.href='donggop.html'">Đóng góp</li>
+                        <li onclick="location.href='gioithieu.html'">Liên hệ</li>
+                        <li id="NguoiDung">
+                            <h4 id="user">Người dùng</h4>
+                            <div>
+                                 
+                                <p onclick="location.href='login.html'">Đăng xuất</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <br>
+        <br>
+        <div class="login">
+            <div class="chaomung">
+                <div class="top">
+                    <h2>Chào mừng bạn đến với trang web làm Trắc nghiệm và Đóng góp Câu hỏi của chúng tôi - nơi kết hợp
+                        giáo dục và sự tương tác cộng đồng một cách hấp dẫn. Chúng tôi tự hào Liên hệ một giao diện
+                        sử dụng HTML, CSS và JavaScript, tạo ra trải nghiệm trực tuyến tương tác và thân thiện với người
+                        dùng.</h2><br>
+
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="login" style="margin: 0px;">
+
+                <div class="nami">
+                    <div class="left">
+                        <div class="top">
+                            <h2>Trang web cung cấp một loạt các bài trắc nghiệm từ các chủ đề như: HTML, CSS, JavaScript </h2>
+                            
+
+                        </div>
+                        <div class="btt" style="margin-top: 50px; margin-left: 300px;">
+                            <div class="btn">
+                                <button class="bLogin" type="button" onclick="location.href='vaohoc.html'">VÀO  HỌC</button>
+                                   
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="left">
+                    <div class="top">
+                        <img src="htmll 2.png">
+                    </div>
+                </div>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div>
+                <div>
+                    <div class="login" style="margin: 0px;">
+                        <div class="mina">
+                            <div class="left">
+                                <div class="top">
+                                    <h2> Chúng tôi đánh giá rất cao đóng góp từ cộng đồng. Nếu bạn muốn chia sẻ kiến
+                                        thức của mình hoặc đề xuất câu hỏi mới, chúng tôi chào đón đóng góp của bạn.
+                                    </h2>
+
+                                </div>
+                                <div class="btt" style="margin-top: 50px; margin-left: 300px;">
+                                    <div class="btn" >
+                                        <button class="bLogin" type="button" onclick="location.href='donggop.html'">ĐÓNG GÓP</button>
+                                            
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="left">
+                            <div class="top">
+                                <img src="robot.png">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    // lay ten người dùng
+    const data = JSON.parse(localStorage.getItem('user'))
+    const name = data[localStorage.getItem('UserAccount')].name;
+    document.getElementById('user').innerText = name;
+
+</script>
+
+</html>

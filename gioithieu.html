@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/caube.css">
+    <script src="https://kit.fontawesome.com/c9f5871d83.js" crossorigin="anonymous"></script>
+    <title>Bài cuối kỳ</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <nav class="nav">
+                <div class="nav-left">
+                    <a href="index.html"><i class="fa-solid fa-paper-plane"></i>DUCAL</a>
+                </div>
+                <div class="nav-right">
+                    <ul>
+                        <li class="active" onclick="location.href='vaohoc.html'">Vào Học</li>
+                        <li onclick="location.href='donggop.html'">Đóng góp</li>
+                        <li onclick="location.href='gioithieu.html'">Liên hệ</li>
+                        <li id="NguoiDung">
+                            <h4 id="user">Người dùng</h4>
+                            <div>
+                                 
+                                <p onclick="location.href='login.html'">Đăng xuất</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <div class="login">
+            <div class="left">
+                <div class="top">
+                    <div class="testss">Nguyen Minh Ducal</div>
+                    <h2>Nguyễn Minh Đức<br>715105052</h2><br>
+                    <img src="robot.png">
+                </div>
+            </div>
+            <div class="left">
+                <div class="top">
+                    <video controls autoplay>
+                        <source src="vid.mp4" type="video/mp4">
+                    </video>
+                    <!-- Thuộc tính controls thêm thanh điều khiển video (play, pause, volume, etc.).
+                     Trong thẻ <source>, bạn sử dụng thuộc tính src để chỉ định đường dẫn đến tệp video và type để chỉ định loại định dạng video (ở đây là MP4).-->
+                </div>
+            </div>
+            <div class="left">
+                <div class="top">
+                    <h2>Nguyễn Minh Ducal<br>&nbsp;&nbsp; 715105052</h2><br>
+                    <img src="robot.png">
+                </div>
+            </div>
+        </div>
+        <div>
+        </div>
+</body>
+<script>
+    const data = JSON.parse(localStorage.getItem('user'))
+    const name = data[localStorage.getItem('UserAccount')].name;
+    document.getElementById('user').innerText = name;
+</script>
+
+
+</html>
